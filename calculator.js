@@ -13,6 +13,12 @@ class StringCalculator {
         const commaSeperatedString = numbers.split("\n").join(",");
         // Split Numbers String by , and store it in an array of numbers.
         const numArray = commaSeperatedString.split(",").map(Number);
+        // check for negatives in numArray
+        const negatives = numArray.filter(n => n < 0);
+        if (negatives.length > 0) {
+            console.log(`Negatives not allowed: ${negatives.join(',')}`);
+            throw new Error(`Negatives not allowed: ${negatives.join(',')}`);
+        }
         // add all the numbers in the num Array
         return numArray.reduce((acc, curr) => acc + curr, 0);
     }
