@@ -31,6 +31,9 @@ describe('StringCalculator', () => {
         it('should return the sum when using a single custom delimiter', () => {
             expect(sc.Add("//;\n1;2")).toBe(3);
         });
+        it('should return the sum when using a single custom delimiter', () => {
+            expect(sc.Add("//[\n1[2")).toBe(3);
+        });
         
         it('should return the sum for multiple numbers using a custom delimiter', () => {
             expect(sc.Add("//;\n1;2;3")).toBe(6);

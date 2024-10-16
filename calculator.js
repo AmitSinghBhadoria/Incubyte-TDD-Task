@@ -8,7 +8,6 @@ class StringCalculator {
             const [delimiterPart, numberPart] = numbers.split('\n');
             const delimiter = delimiterPart.slice(2);
             numbers = numberPart.split(delimiter).join(',');
-            return numbers
         }
         // Split Numbers String by \n and join to create a new string with only comma seperated value.
         const commaSeperatedString = numbers.split("\n").join(",");
