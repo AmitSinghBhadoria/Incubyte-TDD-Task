@@ -2,6 +2,11 @@ class StringCalculator {
     Add(numbers) {
         // if numbers have a falsy value return 0
         if (!numbers) return 0;
+        // Find if numbers String starts with //
+        if (numbers.startsWith('//')) {
+            // return treu if numbers  String contains delimeter
+            return true
+        }
         // Split Numbers String by \n and join to create a new string with only comma seperated value.
         const commaSeperatedString = numbers.split("\n").join(",");
         // Split Numbers String by , and store it in an array of numbers.

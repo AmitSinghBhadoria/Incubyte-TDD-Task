@@ -20,5 +20,17 @@ describe('StringCalculator', () => {
         it("should handle new lines between numbers", () => {
             expect(sc.Add("1\n2,3")).toBe(6);
         })
+
+        it("should return true if string starts with //", () => {
+            expect(sc.Add("//;1;2")).toBeTruthy();
+        })
+        
+        it('should return the sum when using a single custom delimiter', () => {
+            expect(sc.Add("//;\n1;2")).toBe(3);
+        });
+        
+        it('should return the sum for multiple numbers using a custom delimiter', () => {
+            expect(sc.Add("//;\n1;2;3")).toBe(6);
+        });
     })
 })
