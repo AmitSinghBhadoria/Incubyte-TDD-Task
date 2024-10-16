@@ -4,8 +4,11 @@ class StringCalculator {
         if (!numbers) return 0;
         // Find if numbers String starts with //
         if (numbers.startsWith('//')) {
-            // return treu if numbers  String contains delimeter
-            return true
+            //Extract Delemeter From numbers String 
+            const [delimiterPart, numberPart] = numbers.split('\n');
+            const delimiter = delimiterPart.slice(2);
+            numbers = numberPart.split(delimiter).join(',');
+            return numbers
         }
         // Split Numbers String by \n and join to create a new string with only comma seperated value.
         const commaSeperatedString = numbers.split("\n").join(",");

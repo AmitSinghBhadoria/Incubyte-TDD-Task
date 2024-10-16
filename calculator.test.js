@@ -21,8 +21,11 @@ describe('StringCalculator', () => {
             expect(sc.Add("1\n2,3")).toBe(6);
         })
 
-        it("should return true if string starts with //", () => {
-            expect(sc.Add("//;1;2")).toBeTruthy();
+        it("should contain comma seperated string of numbers in place of delemeter",() => {
+            expect(sc.Add("//;\n1;2")).toBe("1,2");
+        })
+        it("should contain comma seperated string of multiple numbers in place of delemeter",() => {
+            expect(sc.Add("//;\n1;2;3")).toBe("1,2,3");
         })
         
         it('should return the sum when using a single custom delimiter', () => {
