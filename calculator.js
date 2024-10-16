@@ -12,11 +12,10 @@ class StringCalculator {
         // Split Numbers String by \n and join to create a new string with only comma seperated value.
         const commaSeperatedString = numbers.split("\n").join(",");
         // Split Numbers String by , and store it in an array of numbers.
-        const numArray = commaSeperatedString.split(",").map(Number);
+        const numArray = commaSeperatedString.split(",").map(Number).filter(n => n <= 1000);
         // check for negatives in numArray
         const negatives = numArray.filter(n => n < 0);
         if (negatives.length > 0) {
-            console.log(`Negatives not allowed: ${negatives.join(',')}`);
             throw new Error(`Negatives not allowed: ${negatives.join(',')}`);
         }
         // add all the numbers in the num Array

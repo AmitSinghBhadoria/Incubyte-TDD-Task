@@ -20,26 +20,32 @@ describe("StringCalculator", () => {
         it("should handle new lines between numbers", () => {
             expect(sc.Add("1\n2,3")).toBe(6);
         })
-
-        it("should contain comma seperated string of numbers in place of delemeter",() => {
+        it("should contain comma seperated string of numbers in place of delemeter", () => {
             expect(sc.Add("//;\n1;2")).toBe("1,2");
         })
-        it("should contain comma seperated string of multiple numbers in place of delemeter",() => {
+        it("should contain comma seperated string of multiple numbers in place of delemeter", () => {
             expect(sc.Add("//;\n1;2;3")).toBe("1,2,3");
         })
-        
         it("should return the sum when using a single custom delimiter", () => {
             expect(sc.Add("//;\n1;2")).toBe(3);
         });
         it("should return the sum when using a single custom delimiter", () => {
             expect(sc.Add("//[\n1[2")).toBe(3);
         });
-        
         it("should return the sum for multiple numbers using a custom delimiter", () => {
             expect(sc.Add("//;\n1;2;3")).toBe(6);
         });
-        it("should throw an exception for negative numbers",()=>{
+        it("should throw an exception for negative numbers", () => {
             expect(() => sc.Add("1,-2,3")).toThrow('Negatives not allowed: -2');
         })
+        it('should ignore numbers bigger than 1000', () => {
+            expect(sc.Add("2,1001")).toBe(2);
+        });
+        it('should Pass with string contianing negative numner and delimeter', () => {
+            expect(() => sc.Add("//;\n2;-1,2")).toThrow("Negatives not allowed: -1");
+        });
+        it('should Pass with string contianing bigger than 1000 and delimeter', () => {
+            expect(sc.Add("//;\n2;1001;2")).toBe(4);
+        });
     })
 })
